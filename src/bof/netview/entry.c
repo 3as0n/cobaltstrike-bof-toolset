@@ -1,9 +1,9 @@
-#include <windows.h>
+
+#include "bofdefs.h"
 #include <lmserver.h>
 #include <lmerr.h>
 #include "lm.h"
-#include "beacon.h"
-#include "bofdefs.h"
+
 #include "base.c"
 
 void netview_enum(wchar_t* domain)

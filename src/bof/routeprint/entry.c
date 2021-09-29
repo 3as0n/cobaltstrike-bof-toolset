@@ -5,9 +5,9 @@
 #define REACTOS_STR_ORIGINAL_COPYRIGHT "Art Yerkes (arty@users.sourceforge.net)"
 modified from base/applications/network/route/route.c
 */
-#include <windows.h>
-#include <iphlpapi.h>
+
 #include "bofdefs.h"
+#include <iphlpapi.h>
 #include "base.c"
 #define IPBUF 17
 #define IN_ADDR_OF(x) *((struct in_addr *)&(x))

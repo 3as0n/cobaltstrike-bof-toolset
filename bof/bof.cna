@@ -99,7 +99,7 @@ sub readbof {
 	return $data;
 }
 
-
+## --start-- dir command
 alias dir {
 	local('$params $keys $args $targetdir $subdirs');
 
@@ -122,25 +122,26 @@ alias dir {
 
 beacon_command_register(
 	"dir",
-	"Lists a target directory using BOF.",
+	"[BOF] Lists a target directory using BOF.",
 	"Usage: dir [directory] [/s]"
 );
+## --end-- dir command
 
-
+## --start-- env
 beacon_command_register(
 "env", 
-"Print environment variables.", 
+"[BOF] Print environment variables.", 
 "env - Print environment variables for current process");
 
 alias env {
 	# execute it.
 	beacon_inline_execute($1, readbof($1, "env"), "go");
 }
-
+## --end-- env
 
 beacon_command_register(
 "ldapsearch", 
-"BOF - Perform LDAP search.", 
+"[BOF] BOF - Perform LDAP search.", 
 "ldapsearch <query> [comma_separated_attributes] [result_count] [DC hostname or IP] [Distingished Name to use]
 	\"\" works as a default for attributes (get all) DC hostname / IP (use Primary DC) and distingished name (use Base domain Level)
 	0 works as default for result_count (get all)
@@ -203,7 +204,7 @@ alias ipconfig {
 
 beacon_command_register(
 "ipconfig", 
-"runs an internal ipconfig command", 
+"[BOF] runs an internal ipconfig command", 
 "Synopsis: ipconfig \n\nLists out adapters, system hostname and configured dns server");
 
 
@@ -211,9 +212,11 @@ alias arp {
     beacon_inline_execute($1,readbof($1,'arp'),"go",$null);
 }
 
-beacon_command_register("arp", 
-"Runs an internal ARP command", 
-"Synopsis: arp \n\nLists out ARP table");
+beacon_command_register(
+	"arp", 
+	"[BOF] Runs an internal ARP command", 
+	"Synopsis: arp \n\nLists out ARP table"
+);
 
 alias nslookup {
 	local('$args $barch $lookup $server $type');
@@ -242,7 +245,7 @@ alias nslookup {
 
 beacon_command_register(
 	"nslookup", 
-	"internally perform a dns query", 
+	"[BOF] internally perform a dns query", 
 	"Synopsis: nslookup <lookup value> <lookup server> <TYPE> \n\nPerform a DNS Query:\n<lookup value> is the ip or hostname you want to query\n<lookup server> is the server you want to query (use 0 or exclude for system default)\n<TYPE> record type to query");
 
 alias netview {
@@ -255,7 +258,7 @@ alias netview {
 
 beacon_command_register(
 	"netview",
-	"lists local workstations and servers",
+	"[BOF] lists local workstations and servers",
 	"Synopsis: netview <optional netbios domain name>"
 );
 
@@ -266,7 +269,7 @@ alias listdns {
 
 beacon_command_register(
 	"listdns",
-	"lists dns cache entries",
+	"[BOF] lists dns cache entries",
 	"Synopsis: listdns (does not take arguments)  Note this will query each found hostname for its ip address"
 );
 
@@ -280,7 +283,7 @@ alias listmods {
 
 beacon_command_register(
 	"listmods",
-	"lists process modules",
+	"[BOF] lists process modules",
 	"Synopsis: listmods <opt: pid> "
 );
 
@@ -332,7 +335,7 @@ alias netuse {
 
 beacon_command_register(
 	"netuse",
-	"Lists, connects to, or disconnects from a shared resource",
+	"[BOF] Lists, connects to, or disconnects from a shared resource",
 	"
 Command: netuse
 Summary: This command connects a computer to a shared resource or disconnects a
@@ -366,7 +369,7 @@ alias netuser {
 
 beacon_command_register(
 	"netuser",
-	"list user info",
+	"[BOF] list user info",
 	"Synopsis: netuser <username> <optional: dns or netbios domain name, if not given run against local computer>"
 );
 
@@ -376,7 +379,7 @@ alias windowlist {
 
 beacon_command_register(
 	"windowlist",
-	"list visible windows",
+	"[BOF] list visible windows",
 	"Synopsis: List windows visible on the users desktop
 	optionally specify \"all\" as an argument to see every possible window"
 );
@@ -387,7 +390,7 @@ alias netstat {
 
 beacon_command_register(
 	"netstat",
-	"get local ipv4 udp/tcp listening and connected ports"
+	"[BOF] get local ipv4 udp/tcp listening and connected ports"
 	"Synopsis: List listening and connected ipv4 udp and tcp connections"
 );
 
@@ -397,7 +400,7 @@ alias routeprint {
 
 beacon_command_register(
 	"routeprint",
-	"prints ipv4 routes on the machine",
+	"[BOF] prints ipv4 routes on the machine",
 	"Synopsis: Lists targets ipv4 routes"
 );
 
@@ -407,7 +410,7 @@ alias whoami {
 
 beacon_command_register (
 	"whoami",
-	"internal version of whoami /all"
+	"[BOF] internal version of whoami /all"
 	"run this to get the info from whoami /all without starting cmd.exe"
 );
 
@@ -455,7 +458,7 @@ alias domainenum {
 
 beacon_command_register(
 	"domainenum",
-	"list usersaccounts in the current domain",
+	"[BOF] list usersaccounts in the current domain",
 	"This command lists out domain user accounts
 	You may specify one of (all, active, locked, disabled) to filter accounts returned
 	defaults to all if not specified;"
@@ -463,7 +466,7 @@ beacon_command_register(
 
 beacon_command_register(
 	"userenum",
-	"List computer user accounts",
+	"[BOF] List computer user accounts",
 	"This command lists user accounts on the current computer
 	You may specify one of (all, active, locked, disabled) to filter accounts returned
 	defaults to all if not specified;"
@@ -475,7 +478,7 @@ alias driversigs {
 
 beacon_command_register(
 	"driversigs",
-	"checks drivers for known edr vendor names",
+	"[BOF] checks drivers for known edr vendor names",
 	"Run the command and we will accept enumerate services and check the binary signatures for known edr vendor names"
 );
 
@@ -488,7 +491,7 @@ alias netshares{
 
 beacon_command_register(
 	"netshares",
-	"list shares on local or remote computer",
+	"[BOF] list shares on local or remote computer",
 	"netshares <\\computername>"
 );
 
@@ -501,7 +504,7 @@ alias netsharesAdmin{
 
 beacon_command_register(
 	"netsharesAdmin",
-	"list shares on local or remote computer and gets more info then standard netshares(requires admin)",
+	"[BOF] list shares on local or remote computer and gets more info then standard netshares(requires admin)",
 	"netsharesAdmin <\\computername>"
 );
 
@@ -537,13 +540,13 @@ alias netGroupListMembers {
 
 beacon_command_register(
 	"netGroupList",
-	"List Groups in this domain (or specified domain if given)",
+	"[BOF] List Groups in this domain (or specified domain if given)",
 	"netGroupList: <opt: domainname>"
 );
 
 beacon_command_register(
 	"netGroupListMembers",
-	"List the members of the specified group in this domain (or specified domain if given)",
+	"[BOF] List the members of the specified group in this domain (or specified domain if given)",
 	"netGroupListMembers: <Group Name> <opt: domainname>"
 );
 
@@ -579,13 +582,13 @@ alias netLocalGroupListMembers {
 
 beacon_command_register(
 	"netLocalGroupList",
-	"List Groups in this server (or specified server if given)",
+	"[BOF] List Groups in this server (or specified server if given)",
 	"netGroupList: <opt: servername>"
 );
 
 beacon_command_register(
 	"netLocalGroupListMembers",
-	"List the members of the specified group in this server (or specified server if given)",
+	"[BOF] List the members of the specified group in this server (or specified server if given)",
 	"netGroupListMembers: <Group Name> <opt: servername>"
 );
 
@@ -601,7 +604,7 @@ alias schtasksenum{
 
 beacon_command_register(
 	"schtasksenum",
-	"enumerates all scheduled tasks on the local or target machine",
+	"[BOF] enumerates all scheduled tasks on the local or target machine",
 	"schtasksenum <opt:target>"
 );
 
@@ -639,7 +642,7 @@ alias schtasksquery{
 
 beacon_command_register(
 	"schtasksquery",
-	"lists the details of the requested task",
+	"[BOF] lists the details of the requested task",
 	"schtasksquery <opt:server> <taskname>
 	Note the task name must be given by full path including taskname, ex. 
 	schtasksquery \\Microsoft\\Windows\\MUI\\LpRemove"
@@ -661,7 +664,7 @@ alias cacls{
 
 beacon_command_register(
 	"cacls",
-	"lists file permissions",
+	"[BOF] lists file permissions",
 	"cacls <file path>
 	Wildcards are supported
 	ex
@@ -697,7 +700,7 @@ alias sc_query {
 
 beacon_command_register(
 	"sc_query", 
-	"queries a services status", 
+	"[BOF] queries a services status", 
 	"Synopsis: sc_query <opt: service name> <opt: hostname>
 give no parameters to enumerate all services
 Give just a service name to query just that service
@@ -732,7 +735,7 @@ alias sc_qc {
 
 beacon_command_register(
 	"sc_qc", 
-	"queries a services configuration", 
+	"[BOF] queries a services configuration", 
 	"Synopsis: sc_qc  <service name> <opt: hostname>
 	 hostname is optional, and the local system is targeted if it is not found"
 );
@@ -764,7 +767,7 @@ alias sc_qdescription {
 
 beacon_command_register(
 	"sc_qdescription", 
-	"queries a services description", 
+	"[BOF] queries a services description", 
 	"Synopsis: sc_qdescription <service name> <opt: hostname>
 	hostname is optional, and the local system is targeted if it is not found");
 
@@ -797,7 +800,7 @@ alias sc_qfailure{
 
 beacon_command_register(
 	"sc_qfailure",
-	"list service failure actions",
+	"[BOF] list service failure actions",
 	"usage: sc_qfailure [servicename] [opt: hostname]"
 );
 
@@ -828,7 +831,7 @@ alias sc_qtriggerinfo{
 
 beacon_command_register(
 	"sc_qtriggerinfo",
-	"lists service triggers",
+	"[BOF] lists service triggers",
 	"usage: sc_qtriggers [servicename] [opt: hostname]"
 );
 
@@ -840,7 +843,7 @@ alias sc_enum{
 
 beacon_command_register(
 	"sc_enum",
-	"Enumerate all service configs in depth",
+	"[BOF] Enumerate all service configs in depth",
 	"usage: sc_enum [opt: hostname]"
 );
 
@@ -896,7 +899,7 @@ alias reg_query
 }
 beacon_command_register(
 	"reg_query",
-	"querys registry Key OR value",
+	"[BOF] querys registry Key OR value",
 "<opt:hostname> <hive> <path> <opt: value to query>
 hive should be one of:
 	HKLM
@@ -944,7 +947,7 @@ alias reg_query_recursive{
 
 beacon_command_register(
 	"reg_query_recursive",
-	"recursivly querys registry key",
+	"[BOF] recursivly querys registry key",
 "<opt:hostname> <hive> <path> 
 hive should be one of:
 	HKLM
@@ -973,7 +976,7 @@ alias tasklist{
 
 beacon_command_register(
 	"tasklist",
-	"Lists currently running processes",
+	"[BOF] Lists currently running processes",
 	"
 Command: tasklist
 Summary: This command displays a list of currently running processes on either
@@ -1009,7 +1012,7 @@ alias wmi_query{
 
 beacon_command_register(
 	"wmi_query",
-	"Runs a general WMI query",
+	"[BOF] Runs a general WMI query",
 	"
 Command: wmi_query
 Summary: This command runs a general WMI query on either a local or remote
@@ -1036,18 +1039,300 @@ alias netsession {
 
 beacon_command_register(
 	"netsession",
-	"list sessions on server",
+	"[BOF] list sessions on server",
 	"Synopsis: netsession <computer> "
 );
 
+## --start-- domaininfo
+alias domaininfo {
+	beacon_inline_execute($1, readbof($1, "get-domaininfo"), "go", $null);
+}
+
+beacon_command_register(
+	"domaininfo",
+	"[BOF] Returns information on the current domain and domain controller.",
+	"Usage: domaininfo"
+);
+## --end-- domaininfo
+
+## --start-- clipboard
+alias clipboard {
+	beacon_inline_execute($1, readbof($1, "get-clipboard"), "go", $null);
+}
+
+beacon_command_register(
+	"clipboard",
+	"[BOF] Prints any text on the clipboard.",
+	"Usage: clipboard"
+);
+## --end-- clipboard
+
+## --start-- wifidump
+alias wifidump {
+	local('$args');
+	$args = bof_pack($1, "Z", $2);
+	# announce what we're doing
+	btask($1, "Running wifidump BOF");
+
+	beacon_inline_execute($1, readbof($1, "wifidump"), "go", $args);
+}
+
+beacon_command_register(
+	"wifidump",
+	"[BOF] dumps wifi clear text credentials",
+	"Usage: wifidump [Wifi_Profile_Name]"
+);
+## --end-- wifidump
+
+## --start-- wifienum
+alias wifienum {
+	# announce what we're doing
+	btask($1, "Running wifienum BOF");
+
+	beacon_inline_execute($1, readbof($1, "wifienum"), "go", $null);
+}
+
+beacon_command_register(
+	"wifienum",
+	"[BOF] Enumerates WiFi interfaces.",
+	"Usage: wifienum"
+);
+## --end-- wifienum
+
+## --start-- portscan
+alias bportscan {
+	local('$handle $args');
+
+	# pack our arguments
+	$args   = bof_pack($1, "zz", $2, $3);
+	# announce what we're doing
+	btask($1, "Running bportscan BOF");
+
+	beacon_inline_execute($1, readbof($1, "portscan"), "go", $null);
+}
+
+beacon_command_register(
+	"bportscan",
+	"[BOF] Scans a single port on a remote host.",
+	"Usage: bportscan [192.168.1.10] [3389]"
+);
+## --end-- portscan
+
+## --start-- curl
+beacon_command_register(
+"curl", 
+"[BOF] Performs a web request against target server and port",
+"curl host [port] [method] [--show] [useragent] [headers] [body] [--noproxy]");
+
+alias curl {
+	local('$barch $args');
+
+	if(size(@_) < 2)
+	{
+		berror($1, "Incorrect usage!");
+		berror($1, beacon_command_detail("curl"));
+		return;
+	}
+
+	# figure out the arch of this session
+	$barch  = barch($1);
+
+	$printoutput = 0;
+	if ($5 eq "--show"){
+		$printoutput = 1;
+	}
+	
+	$proxy = 1;
+	if ($5 eq "--noproxy"){
+		$proxy = 0;
+	}
+
+	if (size(@_) >= 4){
+		if (($4 ne "GET") && 
+			($4 ne "POST") && 
+			($4 ne "PUT") && 
+			($4 ne "PATCH") && 
+			($4 ne "DELETE"))
+		{
+			berror($1, "HTTP method  $+ $4 $+  isn't valid.");
+			berror($1, beacon_command_detail("curl"));
+			return;
+		}
+	}
+
+	if(size(@_) == 2)
+	{
+		# pack our arguments
+		$args = bof_pack($1, "zizizzzi", $2, 0, "GET", $printoutput, "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36", "Accept: */*", "", $proxy);
+	
+	}else if(size(@_) == 3)
+	{
+		# pack our arguments
+		$args = bof_pack($1, "zizizzzi", $2, $3, "GET", $printoutput, "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36", "Accept: */*", "", $proxy);
+	
+	} else if(size(@_) == 4)
+	{
+
+		# include method
+		$args = bof_pack($1, "zizizzzi", $2, $3, $4, $printoutput, "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36", "Accept: */*", "", $proxy);
+	
+	} else if(size(@_) == 5)
+	{
+		# include print option
+		$args = bof_pack($1, "zizizzzi", $2, $3, $4, $printoutput, "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36", "Accept: */*", "", $proxy);
+	} else if(size(@_) == 6)
+	{
+		# include useragent
+		$args = bof_pack($1, "zizizzzi", $2, $3, $4, $printoutput, $6, "Accept: */*", "", $proxy);
+	} else if(size(@_) == 7)
+	{
+		# include headers
+		$args = bof_pack($1, "zizizzzi", $2, $3, $4, $printoutput, $6, $7, "", $proxy);
+	} else if(size(@_) == 8)
+	{
+		# include body
+		$args = bof_pack($1, "zizizzzi", $2, $3, $4, $printoutput, $6, $7, $8, $proxy);
+	} else if(size(@_) == 9)
+	{
+		# include proxy choice
+		$args = bof_pack($1, "zizizzzi", $2, $3, $4, $printoutput, $6, $7, $8, $proxy);
+	}
+
+	# announce what we're doing
+	btask($1, "Running Simple Web Request Utility (@ajpc500)");
+
+	# execute it.
+	beacon_inline_execute($1, readbof($1, "curl"), "go", $args);
+}
+## --end-- curl
+
+## --start-- etw
+beacon_command_register(
+	"etw", 
+	"[BOF] Start or stop ETW logging.", 
+	"etw stop - patch out EtwEventWrite in Ntdll.dll to prevent ETW-based logging.
+	 etw start - patch back in EtwEventWrite in Ntdll.dll to restart ETW-based logging."
+);
+
+alias etw {
+	local('$barch $args');
+
+	if(size(@_) != 2)
+	{
+		berror($1, "Incorrect usage!");
+		berror($1, beacon_command_detail("etw"));
+		return;
+	}
+
+	if(($2 eq "start")||($2 eq "stop"))
+	{
+		# figure out the arch of this session
+		$barch  = barch($1);
+
+		# pack our arguments
+		$args = bof_pack($1, "z", $2);
+		
+		# announce what we're doing
+		btask($1, "Running ETW patching BOF (@ajpc500)");
+		
+		# execute it.
+		beacon_inline_execute($1, readbof($1, "etw"), "go", $args);
+	}else{
+		berror($1, "Incorrect usage!");
+		berror($1, beacon_command_detail("etw"));
+		return;
+	}
+}
+## --end-- etw
+
+## --start-- functionutil
+beacon_command_register(
+"read_function", 
+"[BOF] Read in-memory API function call, compare to on-disk DLL and patch bytes from on-disk DLL.",
+"read_function ntdll.dll EtwEventWrite - Retrieve function bytes.");
+
+
+
+beacon_command_register(
+"check_function", 
+"[BOF] Read in-memory API function call, compare to on-disk DLL and patch bytes from on-disk DLL.",
+"check_function ntdll.dll EtwEventWrite - Retrieve function bytes from memory and disk and compare.");
+
+
+beacon_command_register(
+"patch_function", 
+"[BOF] Read in-memory API function call, compare to on-disk DLL and patch bytes from on-disk DLL.",
+"patch_function ntdll.dll EtwEventWrite - Write on-disk function bytes onto in-memory function.");
+
+
+alias read_function {
+	local('$args');
+
+	if(size(@_) != 3)
+	{
+		berror($1, "Incorrect usage!");
+		berror($1, beacon_command_detail("read_function"));
+		return;
+	}
+
+	# pack our arguments
+	$args = bof_pack($1, "zzi", $2, $3, 0);
+	
+	# announce what we're doing
+	btask($1, "Running API Function Utility (@ajpc500)");
+	
+	# execute it.
+	beacon_inline_execute($1, readbof($1, "functionutil"), "go", $args);
+}
+
+alias check_function {
+	local('$args');
+
+	if(size(@_) != 3)
+	{
+		berror($1, "Incorrect usage!");
+		berror($1, beacon_command_detail("check_function"));
+		return;
+	}
+
+	# pack our arguments
+	$args = bof_pack($1, "zzi", $2, $3, 1);
+	
+	# announce what we're doing
+	btask($1, "Running API Function Utility (@ajpc500)");
+
+	# execute it.
+	beacon_inline_execute($1, readbof($1, "functionutil"), "go", $args);
+}
+
+alias patch_function {
+	local('$args');
+
+	if(size(@_) != 3)
+	{
+		berror($1, "Incorrect usage!");
+		berror($1, beacon_command_detail("patch_function"));
+		return;
+	}
+
+	# pack our arguments
+	$args = bof_pack($1, "zzi", $2, $3, 2);
+	
+	# announce what we're doing
+	btask($1, "Running API Function Utility (@ajpc500)");
+
+	# execute it.
+	beacon_inline_execute($1, readbof($1, "functionutil"), "go", $args);
+}
+## --end-- functionutil
 
 alias resources {
-		beacon_inline_execute($1, readbof($1, "resources"), "go", $null);
+	beacon_inline_execute($1, readbof($1, "resources"), "go", $null);
 }
 
 beacon_command_register(
 "resources",
-"List available memory and space on the primary disk drive",
+"[BOF] List available memory and space on the primary disk drive",
 "Usage: resources");
 
 
@@ -1057,7 +1342,7 @@ alias uptime {
 
 beacon_command_register(
 "uptime",
-"Lists system boot time",
+"[BOF] Lists system boot time",
 "Usage: uptime");
 
 
@@ -1081,7 +1366,7 @@ alias enum_filter_driver{
 
 beacon_command_register(
 	"enum_filter_driver",
-	"Lists filter drivers on the system",
+	"[BOF] Lists filter drivers on the system",
 	"
 Command: enum_filter_driver
 Summary: This command displays a list of filter drivers installed on the 
@@ -1110,7 +1395,7 @@ alias adv_audit_policies{
 
 beacon_command_register(
 	"adv_audit_policies",
-	"Retrieves advanced security audit policies",
+	"[BOF] Retrieves advanced security audit policies",
 	"
 Command: adv_audit_policies
 Summary: This command retrieves the advanced security audit policies set in the
@@ -1127,7 +1412,7 @@ alias listpipes
 
 beacon_command_register(
 	"listpipes",
-	"Lists local named pipes",
+	"[BOF] Lists local named pipes",
 	"Usage: listpipes"
 );
 alias enumLocalSessions{
@@ -1154,7 +1439,7 @@ alias findLoadedModule{
 
 beacon_command_register(
 	"findLoadedModule",
-	"Finds processes loading a specific dll",
+	"[BOF] Finds processes loading a specific dll",
 	"Usage:
 	findLoadedModule <part dll name> [opt: part proc name]
 	
@@ -1172,7 +1457,7 @@ alias adcs_enum{
 
 beacon_command_register(
 	"adcs_enum",
-	"Enumerates CAs and templates in the AD using Win32 functions",
+	"[BOF] Enumerates CAs and templates in the AD using Win32 functions",
 	"
 Command: adcs_enum
 Summary: This command enumerates the certificate authorities and certificate 
@@ -1194,7 +1479,7 @@ alias adcs_enum_com{
 
 beacon_command_register(
 	"adcs_enum_com",
-	"Enumerates CAs and templates in the AD using ICertConfig COM object",
+	"[BOF] Enumerates CAs and templates in the AD using ICertConfig COM object",
 	"
 Command: adcs_enum_com
 Summary: This command enumerates the certificate authorities and certificate 
@@ -1216,7 +1501,7 @@ alias adcs_enum_com2{
 
 beacon_command_register(
 	"adcs_enum_com2",
-	"Enumerates CAs and templates in the AD using IX509PolicyServerListManager COM object",
+	"[BOF] Enumerates CAs and templates in the AD using IX509PolicyServerListManager COM object",
 	"
 Command: adcs_enum_com2
 Summary: This command enumerates the certificate authorities and certificate 
@@ -1251,7 +1536,7 @@ alias vssenum{
 
 beacon_command_register(
 	"vssenum",
-	"Enumerate snapshots on a remote machine",
+	"[BOF] Enumerate snapshots on a remote machine",
 "Command: vssenum
 If the target machine has volume snapshots this command will list there timestamps
 This command will likely only work on windows server 2012 + with specific configurations

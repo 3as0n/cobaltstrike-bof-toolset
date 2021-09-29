@@ -1,11 +1,11 @@
-#include <windows.h>
+
+#include "bofdefs.h"
 #include <iphlpapi.h>
 #include <stdint.h>
 #include <stdlib.h>
 #include "lmaccess.h"
 #include "lmerr.h"
 #include "lm.h"
-#include "bofdefs.h"
 #include "base.c"
 
 #define TICKSTO1970         0x019db1ded53e8000LL

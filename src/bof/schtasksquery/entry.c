@@ -1,5 +1,5 @@
 #define _WIN32_DCOM
-#include <windows.h>
+
 #include "bofdefs.h"
 #include "base.c"
 #include "queue.c"

@@ -1,7 +1,7 @@
-#include <windows.h>
+
+#include "bofdefs.h"
 #include <stdio.h>
 #include "psapi.h"
-#include "bofdefs.h"
 #include "base.c"
 
 // Inspired from: https://www.codeguru.com/cpp/w-p/win32/versioning/article.php/c4539/Versioning-in-Windows.htm

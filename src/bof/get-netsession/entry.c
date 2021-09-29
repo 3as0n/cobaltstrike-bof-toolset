@@ -1,8 +1,8 @@
-#include <windows.h>
+
 #include "bofdefs.h"
 #include "base.c"
 #include <stdio.h>
-#include <windows.h> 
+ 
 #include <lm.h>
 
 //#pragma comment(lib, "Netapi32.lib")

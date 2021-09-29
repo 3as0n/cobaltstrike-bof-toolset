@@ -1,4 +1,4 @@
-#include <windows.h>
+#include "bofdefs.h"
 #include <dsgetdc.h>
 #include <winldap.h>
 #include <winber.h>
@@ -7,7 +7,6 @@
 #include <sddl.h>
 #include <rpcdce.h>
 #include <stdint.h>
-#include "bofdefs.h"
 #include "base.c"
 #define SECURITY_WIN32
 #include <secext.h> 

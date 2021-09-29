@@ -1,10 +1,8 @@
 //Credit for this function goes to http://jackson-t.ca/edr-reversing-evading-02.html
 //This code is adapted from the repo published here https://gist.github.com/jthuraisamy/4c4c751df09f83d3620013f5d370d3b9
-
-#include <windows.h>
+#include "bofdefs.h"
 #include <winternl.h>
 #include <imagehlp.h>
-#include "bofdefs.h"
 #include "base.c"
 
 DWORD intstrlen(const char * s, BOOL u)

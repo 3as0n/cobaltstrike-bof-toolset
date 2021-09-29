@@ -1,6 +1,6 @@
-#include <windows.h>
+
 #include <stdio.h>
-#include "beacon.h"
+
 #include "bofdefs.h"
 #include "base.c"
 #include "adcs_enum_com2.c"

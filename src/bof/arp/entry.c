@@ -1,6 +1,5 @@
-#include <windows.h>
-#include <iphlpapi.h>
 #include "bofdefs.h"
+#include <iphlpapi.h>
 #include "base.c"
 
 #ifdef BOF

@@ -1,5 +1,3 @@
-#include <windows.h>
-#include "beacon.h"
 #include "bofdefs.h"
 #include <windns.h>
 #include "base.c"

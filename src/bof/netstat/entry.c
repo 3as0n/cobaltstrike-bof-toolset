@@ -6,9 +6,9 @@
 6  * COPYRIGHT:   Copyright 2005 Ged Murphy <gedmurphy@gmail.com>
 7  */
 
-#include <windows.h>
-#include <iphlpapi.h>
+
 #include "bofdefs.h"
+#include <iphlpapi.h>
 #include "base.c"
 
 #define HOSTNAMELEN 256

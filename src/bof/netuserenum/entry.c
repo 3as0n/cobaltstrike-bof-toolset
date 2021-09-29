@@ -1,11 +1,11 @@
 
 //https://docs.microsoft.com/en-us/windows/win32/api/lmaccess/nf-lmaccess-netuserenum
-#include <windows.h>
+
+#include "bofdefs.h"
 #include <iphlpapi.h>
 #include <lmaccess.h>
 #include <lmerr.h>
 #include "lm.h"
-#include "bofdefs.h"
 #include "base.c"
 
 /*%enumtype = %(
