@@ -21,6 +21,16 @@ for i in `ls`;do cd $i && make && cd ..;done
 ### 功能
 |命令|使用|说明|
 |-------|-----|-----|
+|domaininfo|domaininfo|获取当前域和域控信息|
+|clipboard|clipboard|获取粘贴板中的文本|
+|wifienum|wifienum|枚举wifi接口|
+|wifiedump|wifiedump [Wifi_Profile_Name]|dump wifi明文凭据|
+|bportscan|bofportscan [ip] [port]|单个端口扫描|
+|etw|etw [stop\|start]|ETW Patching|
+|read_function|read_function [module] [function1,function2]|read_function ntdll.dll NtCreateProcess,NtCreateFile|
+|check_function|check_function [module] [function]|check_function ntdll.dll EtwEventWrite|
+|patch_function|patch_function [dll_path] [function_name]|patch_function ntdll.dll EtwEventWrite|
+|curl|curl host [port] [method] [--show] [useragent] [headers] [body] [--noproxy]|curl http://example.com 80 GET --show|
 |arp|arp| 列APR表 |
 |adcs_enum | adcs_enum | 使用Win32函数，在域控上枚举**CA证书**和**模板** |
 |adcs_enum_com | adcs_enum_com | 使用ICertConfig COM对象，在域控上枚举**CA证书**和**模板** |
