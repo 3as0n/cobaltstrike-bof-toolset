@@ -9,7 +9,7 @@ git clone https://github.com/AttackTeamFamily/cobaltstrike-bof-toolset.git
 
 ### 自己编译
 ```
-- 编译环境：kali linux
+编译环境：kali linux
 命令：
 sudo apt install mingw-x64
 git clone https://github.com/AttackTeamFamily/cobaltstrike-bof-toolset.git
