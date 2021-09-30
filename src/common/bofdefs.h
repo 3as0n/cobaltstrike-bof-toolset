@@ -693,7 +693,16 @@ DECLSPEC_IMPORT WINBOOL WINAPI VERSION$VerQueryValueA(LPCVOID pBlock, LPCSTR lpS
 #define OLEAUT32$SafeArrayUnaccessData SafeArrayUnaccessData
 
 
-
+#define Ws2_32$WSAGetLastError WSAGetLastError
+#define Ws2_32$getaddrinfo getaddrinfo
+#define Ws2_32$socket socket
+#define Ws2_32$connect connect
+#define Ws2_32$closesocket closesocket
+#define Ws2_32$freeaddrinfo freeaddrinfo
+#define KERNEL32$RtlZeroMemory RtlZeroMemory
+#define Ws2_32$WSACleanup WSACleanup
+#define Ws2_32$WSAStartup WSAStartup
+#define Ws2_32$closesocket closesocket
 
 /*
 #define CERTCLI$CAEnumFirstCA CAEnumFirstCA
